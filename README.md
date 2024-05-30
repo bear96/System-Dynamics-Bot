@@ -1,6 +1,6 @@
 # System-Dynamics-Bot
 
-This repository contains the code for the paper "From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams."
+This repository contains the code for the paper "From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams" ([arXiv link](https://arxiv.org/abs/2402.11400))
 
 ## Installation for Windows
 
@@ -49,3 +49,26 @@ The list of arguments are given below:
 - --verbose: Specifying this flag allows you to see all the inner workings of the System Dynamics Bot
 - --diagram: Specifying this flag tells the System Dynamics Bot to actually create the CLD diagram and saves it in the current working directory. 
 
+## Citation
+If you use this code, please cite the following:
+
+Hosseinichimeh, N., Majumdar, A., Williams, R., & Ghaffarzadegan, N. (2024). From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams. ArXiv, abs/2402.11400.
+
+```bibtex
+@misc{hosseinichimeh2024text,
+      title={From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams}, 
+      author={Niyousha Hosseinichimeh and Aritra Majumdar and Ross Williams and Navid Ghaffarzadegan},
+      year={2024},
+      eprint={2402.11400},
+      archivePrefix={arXiv},
+      primaryClass={cs.HC}
+}
+```
+
+## Questions
+
+If you have any questions about the code, please feel free to open an issue in this repository. 
+
+## License
+
+This code is provided for non-commercial use only. You are free to use, modify, and distribute the code for personal or educational purposes. However, any commercial use is strictly prohibited without prior written consent as stated in [Attribution-NonCommercial 4.0 International](LICENSE). 
