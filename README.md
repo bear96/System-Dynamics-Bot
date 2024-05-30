@@ -1,20 +1,51 @@
 # System-Dynamics-Bot
-This repository contains the code for the paper "From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams"  
+
+This repository contains the code for the paper "From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams."
 
 ## Installation for Windows
 
-Step 1. If you're installing the required packages on Windows, you need to make sure that you have Python 3.8+ as well as C++ installed in your system. If you do not have Python, you can download Python from their official website. Make sure you have Python on PATH. 
-For C++, I have included the .exe file [here](cld\vs_BuildTools.exe). These are important prerequisites to running the code, so please make sure you have them installed before proceeding further. 
+### Step 1: Install Python and C++
 
-Step 2. The next step is to install [Graphviz](cld\stable_windows_10_cmake_Release_x64_graphviz-install-2.46.0-win64.exe). While installing, make sure that you check the option of adding Graphviz to PATH. Sometimes, despite everything, Grpahviz doesn't get added to PATH. You can easily check if Graphviz is on PATH by opening a new terminal and running `dot -v`. If `dot` is not recognized as a command, then you need to manually add Graphviz to PATH. Typically, the directory is something like `C:\Program Files\Graphviz\bin`. Once you have manually added Graphviz to PATH, open a new terminal and run `dot -v` again. You should be able to see the version details now.
+Ensure that you have Python 3.8+ and C++ installed. If you do not have Python, you can download it from the [official website](https://www.python.org/). Make sure Python is added to your PATH.
 
-Step 3. Run the following command to install Pygraphviz: ```python -m pip install --use-pep517 --config-setting="--global-option=build_ext" --config-setting="--global-option=-IC:\Program Files\Graphviz\include" --config-setting="--global-option=-LC:\Program Files\Graphviz\lib" pygraphviz```. Please verify that the locations `C:\Program Files\Graphviz\include` and `C:\Program Files\Graphviz\lib` are correct before you run this code. 
+For C++, I have included the executable file [here](cld/vs_BuildTools.exe). These are essential prerequisites, so ensure they are installed before proceeding.
 
-Step 5. Run `pip install -r requirements.txt` to install the required python packages.
+### Step 2: Install Graphviz
 
-Step 6. Set your OpenAI API key as your environment variable. You can do this easily by typing `set OPENAI_API_KEY=your-api-key` or `$env:OPENAI_API_KEY = "your-api-key"` if you are using Powershell. 
+Download and install [Graphviz](cld/stable_windows_10_cmake_Release_x64_graphviz-install-2.46.0-win64.exe). During installation, ensure the option to add Graphviz to PATH is checked. Verify Graphviz is on PATH by running `dot -v` in a new terminal. If `dot` is not recognized, manually add Graphviz to PATH. Typically, the directory is `C:\Program Files\Graphviz\bin`. After adding it, run `dot -v` again to confirm.
+
+### Step 3: Install Pygraphviz
+
+Run the following command to install Pygraphviz:
+```bash
+python -m pip install --use-pep517 --config-setting="--global-option=build_ext" --config-setting="--global-option=-IC:\Program Files\Graphviz\include" --config-setting="--global-option=-LC:\Program Files\Graphviz\lib" pygraphviz
+```
+
+### Step 4.  Install Required Python Packages
+Run `pip install -r requirements.txt` to install the required python packages.
+
+### Step 5. Set OpenAI API Key
+Set your OpenAI API key as your environment variable. You can do this easily by typing `set OPENAI_API_KEY=your-api-key` or `$env:OPENAI_API_KEY = "your-api-key"` if you are using Powershell. 
 
 ## Installation for Linux/Other Unix based systems
 
-Step 1. Unix based systems already have C++ and Python installed, so you 
+### Step 1. Install Graphviz
+Unix based systems already have C++ and Python installed, so you can skip those installation processes. You can install Graphviz by running ```sudo apt-get install graphviz graphviz-dev``. As before, please ensure that Graphviz installation directory is on PATH. In Linux systems, it usually gets added to PATH by default.
+
+### Step 2. Install Required Python Packages
+The next step is installing the required packages by running `pip install -r requirements.txt`. Please install pygraphviz separately by running `pip install pygraphviz`. 
+
+### Step 3. Set OpenAI API Key
+Set your OpenAI API key as your environment variable by running `export OPENAI_API_KEY="your_api_key"`. You can verify that you've added the API key by running `printenv OPENAI_API_KEY`. 
+
+Remember that this environment variable exists only during this session so you have to do this every time you want to run the code. I'd recommend not adding the API key permanently due to security concerns.
+
+## Running the System Dynamics Bot
+
+You can run the System Dynamics Bot by navigating to the cld folder and running `python main.py --arg1 --arg2`. 
+
+The list of arguments are given below:
+
+- --verbose: Specifying this flag allows you to see all the inner workings of the System Dynamics Bot
+- --diagram: Specifying this flag tells the System Dynamics Bot to actually create the CLD diagram and saves it in the current working directory. 
 
