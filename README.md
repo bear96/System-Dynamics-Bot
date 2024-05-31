@@ -12,7 +12,7 @@ For C++, I have included the executable file [here](cld/vs_BuildTools.exe). Thes
 
 ### Step 2: Install Graphviz
 
-Download and install [Graphviz](cld/stable_windows_10_cmake_Release_x64_graphviz-install-2.46.0-win64.exe). During installation, ensure the option to add Graphviz to PATH is checked. Verify Graphviz is on PATH by running `dot -v` in a new terminal. If `dot` is not recognized, manually add Graphviz to PATH. Typically, the directory is `C:\Program Files\Graphviz\bin`. After adding it, run `dot -v` again to confirm.
+Download and install [Graphviz](cld/stable_windows_10_cmake_Release_x64_graphviz-install-2.46.0-win64.exe). During installation, ensure the option to add Graphviz to PATH is checked. Verify Graphviz is on PATH by running `dot -V` in a new terminal. If `dot` is not recognized, manually add Graphviz to PATH. Typically, the directory is `C:\Program Files\Graphviz\bin`. After adding it, run `dot -v` again to confirm.
 
 ### Step 3: Install Pygraphviz
 
