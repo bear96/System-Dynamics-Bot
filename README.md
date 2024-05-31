@@ -30,7 +30,7 @@ Set your OpenAI API key as your environment variable. You can do this easily by 
 ## Installation for Linux/Other Unix based systems
 
 ### Step 1. Install Graphviz
-Unix based systems already have C++ and Python installed, so you can skip those installation processes. You can install Graphviz by running ```sudo apt-get install graphviz graphviz-dev``. As before, please ensure that Graphviz installation directory is on PATH. In Linux systems, it usually gets added to PATH by default.
+Unix based systems already have C++ and Python installed, so you can skip those installation processes. You can install Graphviz by running `sudo apt-get install graphviz graphviz-dev`. As before, please ensure that Graphviz installation directory is on PATH. In Linux systems, it usually gets added to PATH by default.
 
 ### Step 2. Install Required Python Packages
 The next step is installing the required packages by running `pip install -r requirements.txt`. Please install pygraphviz separately by running `pip install pygraphviz`. 
