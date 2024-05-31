@@ -1,6 +1,11 @@
-# System-Dynamics-Bot
+# From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams
 
-This repository contains the code for the paper "From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams" ([arXiv link](https://arxiv.org/abs/2402.11400))
+This repository includes the code and supplementary materials for the paper: **From Text to Map: A System Dynamics Bot for Constructing Causal Loop Diagrams** ([arXiv link](https://arxiv.org/abs/2402.11400))
+
+>**Abstract:** We introduce and test the System Dynamics Bot, a computer program leveraging a large language model to automate the creation of causal loop diagrams from textual data. To evaluate its performance, we ensembled two distinct databases. The first dataset includes 20 causal loop diagrams and associated texts sourced from system dynamics literature. The second dataset comprises responses from 30 participants to the Lake Urmia Vignette, along with causal loop diagrams coded by three system dynamics modelers. The bot uses textual data and successfully identifies approximately sixty percent of the links between variables and feedback loops in both datasets. This paper outlines our approach, provides examples, and presents evaluation results.
+>We discuss encountered challenges and implemented solutions in developing the System Dynamics Bot. The Bot can facilitate extracting mental models from textual data and improve model building processes. Moreover, the two datasets can serve as a testbed for similar programs.
+
+An OpenAI API key is required to use this application. A user can [create an account](https://platform.openai.com/login) with OpenAI, navigate to the [API key page](https://platform.openai.com/account/api-keys) and click on "Create new secret key", optionally naming the key. Make sure that you have [GPT-4 access](https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4), and **save your API key somewhere safe and do not share it with anyone.**
 
 ## Installation for Windows
 
@@ -48,6 +53,7 @@ The list of arguments are given below:
 
 - --verbose: Specifying this flag allows you to see all the inner workings of the System Dynamics Bot
 - --diagram: Specifying this flag tells the System Dynamics Bot to actually create the CLD diagram and saves it in the current working directory. 
+
 
 ## Citation
 If you use this code, please cite the following:
