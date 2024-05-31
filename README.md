@@ -17,7 +17,7 @@ For C++, I have included the executable file [here](cld/vs_BuildTools.exe). Thes
 
 ### Step 2: Install Graphviz
 
-Download and install [Graphviz](cld/stable_windows_10_cmake_Release_x64_graphviz-install-2.46.0-win64.exe). During installation, ensure the option to add Graphviz to PATH is checked. Verify Graphviz is on PATH by running `dot -v` in a new terminal. If `dot` is not recognized, manually add Graphviz to PATH. Typically, the directory is `C:\Program Files\Graphviz\bin`. After adding it, run `dot -v` again to confirm.
+Download and install [Graphviz](cld/stable_windows_10_cmake_Release_x64_graphviz-install-2.46.0-win64.exe). During installation, ensure the option to add Graphviz to PATH is checked. Verify Graphviz is on PATH by running `dot -V` in a new terminal. If `dot` is not recognized, manually add Graphviz to PATH. Typically, the directory is something like `C:\Program Files\Graphviz\bin`. After adding it, run `dot -V` again to confirm.
 
 ### Step 3: Install Pygraphviz
 
@@ -25,6 +25,7 @@ Run the following command to install Pygraphviz:
 ```bash
 python -m pip install --use-pep517 --config-setting="--global-option=build_ext" --config-setting="--global-option=-IC:\Program Files\Graphviz\include" --config-setting="--global-option=-LC:\Program Files\Graphviz\lib" pygraphviz
 ```
+Please verify that the locations `C:\Program Files\Graphviz\include` and `C:\Program Files\Graphviz\lib` are correct before you run this code. 
 
 ### Step 4.  Install Required Python Packages
 Run `pip install -r requirements.txt` to install the required python packages.
@@ -35,7 +36,7 @@ Set your OpenAI API key as your environment variable. You can do this easily by 
 ## Installation for Linux/Other Unix based systems
 
 ### Step 1. Install Graphviz
-Unix based systems already have C++ and Python installed, so you can skip those installation processes. You can install Graphviz by running ```sudo apt-get install graphviz graphviz-dev``. As before, please ensure that Graphviz installation directory is on PATH. In Linux systems, it usually gets added to PATH by default.
+Unix based systems already have C++ and Python installed, so you can skip those installation processes. You can install Graphviz by running `sudo apt-get install graphviz graphviz-dev`. As before, please ensure that Graphviz installation directory is on PATH. In Linux systems, it usually gets added to PATH by default.
 
 ### Step 2. Install Required Python Packages
 The next step is installing the required packages by running `pip install -r requirements.txt`. Please install pygraphviz separately by running `pip install pygraphviz`. 
