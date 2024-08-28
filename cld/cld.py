@@ -3,6 +3,7 @@ from utils import *
 import numpy as np
 import nltk
 nltk.download('punkt')
+nltk.download('punkt_tab')
 
 class CLD():
     def __init__(self, question,threshold = 0.85, verbose = False):

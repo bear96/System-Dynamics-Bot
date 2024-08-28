@@ -79,6 +79,12 @@ def extract_numbers(input_string):
     numbers = pattern.findall(input_string)
     return numbers
 
+def xmile_name(display_name):
+    return "_".join( display_name.split() )
+ 
+def clean_symbol(symbol):
+    return symbol.replace('(','').replace(')','')
+
 def get_json(text):
     match = re.search(r'```json\n(.*?)```', text, re.DOTALL)
     if match:
