@@ -15,11 +15,13 @@ class GreatSage():
     def __init__(self,
                  verbose:bool = False,
                  diagram: bool = False,
+                 xmile: bool = False,
                  threshold: float = 0.85,
                  question: Optional[str] = None,
                  api_key: Optional[str] = None):
         self.verbose = verbose
         self.diagram = diagram
+        self.xmile = xmile
         self.question = question
         self.CLD = CLD(question = self.question, verbose = self.verbose, threshold=threshold)
 
@@ -28,6 +30,8 @@ class GreatSage():
         result_list = self.check_relationship_repetitions(response)
         if self.diagram:
             self.generate_causal_loop_diagram(result_list)
+        if self.xmile:
+            self.generate_xmile(result_list)
         if not self.verbose:
             return response
         else:
@@ -39,6 +43,87 @@ class GreatSage():
         result_list = [re.sub(r'[!.,;:]', '', line) for line in result_list]
         result_list = list(set(result_list))
         return result_list
+
+    def generate_xmile(self, result_list):
+        variables_dict = {} #variable: list of causes
+
+        xmile_start = """
+<?xml version="1.0" encoding="utf-8"?>
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" namespace="std, isee"/>
+        <vendor>SDBot Github</vendor>
+        <product version="1.0.0" lang="en">SDBot</product>
+    </header>
+    <isee:prefs layer="cld"/>
+    <model>
+        <variables>
+"""
+        xmile_variables = ""
+        xmile_connectors_start = """
+        </variables>
+        <views>
+            <view type="stock_flow">
+                <style>
+                    <aux>
+                        <shape type="name_only"/>
+                    </aux>
+                </style>
+"""
+        xmile_connectors = ""
+        xmile_connectors_end = """
+            </view>
+        </views>
+        """
+        xmile_end = """
+    </model>
+</xmile>
+        """
+
+        aux_base_indent = "\t\t\t"
+        connector_base_indent = "\t\t\t\t"
+
+        for i, line in enumerate(result_list):
+            variable1, variable2, symbol = self.CLD.extract_variables(line)
+
+            if variable1 == variable2:
+                print(RED+f"XMILE generator skipping illegal self connection in {variable1} ..."+RESET)
+                continue
+
+            if variable2 in variables_dict:
+                variables_dict[variable2].append(variable1)
+            else:
+                variables_dict[variable2] = [variable1]
+
+            xmile_connectors += connector_base_indent + "<connector polarity=\"" + clean_symbol(symbol) + "\">\n"
+            xmile_connectors += connector_base_indent +"\t<from>" + xmile_name(variable1) + "</from>\n"
+            xmile_connectors += connector_base_indent +"\t<to>" + xmile_name(variable2) + "</to>\n"
+            xmile_connectors += connector_base_indent +"</connector>\n"
+
+        for variable, causer_list in variables_dict.items():
+            pretty_name = variable.replace("\n", "\\\n").replace("\r", "\\\r")
+            
+            xmile_variables += aux_base_indent + "<aux name=\"" + pretty_name + "\">\n"
+            xmile_variables += aux_base_indent +"\t<eqn>NAN(" 
+            
+            for counter, causer in enumerate(causer_list):
+                if counter > 0:
+                    xmile_variables += ","
+
+                xmile_variables += xmile_name(causer)
+
+            xmile_variables += ")</eqn>\n"
+            xmile_variables += aux_base_indent +"\t<isee:delay_aux/>\n"
+            xmile_variables += aux_base_indent + "</aux>\n"
+
+        content = xmile_start + xmile_variables + xmile_connectors_start + xmile_connectors + xmile_connectors_end + xmile_end
+
+
+        save_name = input("Enter the name of the xmile file before saving: ")
+        f = open(save_name + ".xmile", "w")
+        f.write(content)
+        f.close()
+
 
     def generate_causal_loop_diagram(self,result_list):
         symbol = ""
