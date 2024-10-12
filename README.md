@@ -7,6 +7,9 @@ This repository includes the code and supplementary materials for the paper: **F
 
 An OpenAI API key is required to use this application. A user can [create an account](https://platform.openai.com/login) with OpenAI, navigate to the [API key page](https://platform.openai.com/account/api-keys) and click on "Create new secret key", optionally naming the key. Make sure that you have [GPT-4 access](https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4), and **save your API key somewhere safe and do not share it with anyone.**
 
+## Update
+Since some people have been having trouble with running the SD Bot, I have created a very simple [application](https://github.com/bear96/System-Dynamics-Bot/blob/main/cld/dist/SD-Bot.exe) to run on Windows. Just download it and double click on the .exe file to get started. If you are a developer wanting to modify this program, you are free to follow the steps I have outlined below.
+
 ## Installation for Windows
 
 ### Step 1: Install Python and C++
