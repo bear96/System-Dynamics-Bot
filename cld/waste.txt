@@ -1,0 +1,6 @@
+1. environmental education -->(-) waste generation
+2. infrastructure availability -->(+) waste separation motivation
+3. municipal action -->(+) infrastructure availability
+4. peer pressure -->(-) recycling behavior
+5. waste generation -->(+) peer pressure
+6. waste generation -->(+) municipal action

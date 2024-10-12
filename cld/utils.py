@@ -64,7 +64,7 @@ def get_completion_from_messages(messages, model="gpt-4-1106-preview", response_
         raise
 
 @backoff.on_exception(backoff.expo, (openai.RateLimitError, openai.APIConnectionError, openai.Timeout), max_tries=20, logger=backoff_logger)
-def get_embedding(text, model="text-embedding-ada-002"):
+def get_embedding(text, model="text-embedding-3-small"):
     text = text.replace("\n", " ")
     embeddings = client.embeddings.create(input = [text], model=model)
     return embeddings.data[0].embedding

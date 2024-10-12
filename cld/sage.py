@@ -15,18 +15,24 @@ class GreatSage():
     def __init__(self,
                  verbose:bool = False,
                  diagram: bool = False,
+                 write_relationships: bool = False,
                  xmile: bool = False,
                  threshold: float = 0.85,
                  question: Optional[str] = None,
                  api_key: Optional[str] = None):
         self.verbose = verbose
         self.diagram = diagram
+        self.write_relationships = write_relationships
         self.xmile = xmile
         self.question = question
         self.CLD = CLD(question = self.question, verbose = self.verbose, threshold=threshold)
 
     def think(self):
         response = self.CLD.generate_causal_relationships()
+        if self.write_relationships:
+            filename = input("Enter filename for causal relationships: ")
+            with open(f'{filename}.txt', 'w') as f:
+                f.write(response)
         result_list = self.check_relationship_repetitions(response)
         if self.diagram:
             self.generate_causal_loop_diagram(result_list)
